@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AlbumReviews</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+      <% if user_signed_in? %>
+        <%= link_to 'Sign Out', '#' %>
+      <% else %>
+        <%= link_to 'Sign Up', new_user_registration_path %>
+      <% end %>
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </body>
+</html>
