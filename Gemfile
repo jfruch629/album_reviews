@@ -44,6 +44,7 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'shoulda-matchers', require: false
   gem 'devise'
+  gem 'factory_bot_rails'
 end
 
 group :development do
