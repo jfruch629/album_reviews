@@ -20,7 +20,8 @@ feature 'user views all albums', %Q{
   end
 
   scenario 'user views an album' do
-    album = FactoryBot.create(:album)
+    user = FactoryBot.create(:user)
+    album = FactoryBot.create(:album, user: user)
     visit root_path
     click_link "Summer 08"
 

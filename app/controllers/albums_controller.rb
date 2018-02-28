@@ -1,5 +1,7 @@
 class AlbumsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_album, only: [:show, :edit, :update, :destroy]
+
   def index
     @albums = Album.all
     root_path = '/'
@@ -18,6 +20,7 @@ class AlbumsController < ApplicationController
 
   def create
   @album = Album.new(album_params)
+  @album.user = current_user
 
   respond_to do |format|
     if @album.save
@@ -45,5 +48,11 @@ end
 
   def album_params
     params.require(:album).permit(:title, :artist, :summary, :genre, :starting_year, :tracks)
+  end
+
+  def authorize_user
+    if !user_signed_in? || !current_user.admin?
+      raise ActionController::RoutingError.new("Not Found")
+    end
   end
 end

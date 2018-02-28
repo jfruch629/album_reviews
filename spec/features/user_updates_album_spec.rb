@@ -13,8 +13,8 @@ feature 'user updates an album', %Q{
   scenario 'a signed in user successfully updates their album' do
     # For this & the tests below, I need to include verifying with a password
 
-    album = FactoryBot.create(:album)
     user = FactoryBot.create(:user)
+    album = FactoryBot.create(:album, user: user)
     visit root_path
     click_link 'Sign In'
     fill_in 'Email', with: user.email
@@ -23,8 +23,8 @@ feature 'user updates an album', %Q{
 
     click_link album.title
     click_link 'Update'
-    fill_in 'album_title', with: 'Summer 08'
-    fill_in 'album_artist', with: 'Metronomy'
+    fill_in 'album_title', with: 'Summer 0Edited'
+    fill_in 'album_artist', with: 'Metro-edited'
     fill_in 'album_summary', with: 'Edited Summary'
     fill_in 'album_starting_year', with: '2000-never'
 

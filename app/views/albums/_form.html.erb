@@ -33,12 +33,7 @@
     <%= f.text_field :genre, id: :album_genre %>
   </div>
   <br />
-  <div class="field">
-    <%= f.fields_for :tracks do |t| %><br />
-      <%= t.label :track %>
-      <%= t.text_field :track %>
-    <% end %>
-  </div>
+
   <br />
   <div class="actions">
     <%= f.submit "Save"  %>
