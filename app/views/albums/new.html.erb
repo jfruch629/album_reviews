@@ -1,5 +1,14 @@
 <h1> New Album </h1>
 
+<% if @album.errors.any? %>
+  <ul class="errors">
+    <% @album.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<hr>
+
 
   <%= render 'form', album: @album %>
   <%= link_to 'Back', root_path %>

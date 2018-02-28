@@ -1,1 +1,31 @@
-<h1> <%= @album.title %> (<%= @album.starting_year %>) </h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= @album.title %></strong>
+
+</p>
+
+<p>
+  <strong><%= @album.artist %></strong>
+</p>
+
+<p>
+  <strong><%= @album.starting_year %></strong>
+  <%= @album.genre %>
+</p>
+
+<% if @album.tracks? %>
+  <p>
+    <strong>Tracks:</strong><br />
+    <%= @album.tracks.each_with_index do |track, n| %>
+      <%= (n + 1) %>. <%= track %><br />
+    <% end %>
+  <% else %>
+    No Tracks Listed Yet!
+<% end %>
+</p>
+
+<br />
+<p><%= link_to 'Update', edit_album_path(@album) %></p>
+<p><%= link_to 'Destroy', @album, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<p><%= link_to 'Back', root_path %></p>

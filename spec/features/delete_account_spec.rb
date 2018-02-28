@@ -12,7 +12,7 @@ feature 'user deletes account', %Q{
   # •	If deleted, user must be signed out, credentials cleared, and redirected to home page
   # • User should not be able to sign in once deleting account
 
-  scenario 'user successfully deletes account', js: true do
+  xscenario 'user successfully deletes account' do
     user = FactoryBot.create(:user)
     visit root_path
     click_link 'Sign In'
@@ -26,9 +26,7 @@ feature 'user deletes account', %Q{
     click_link 'Edit Profile'
     click_button 'Cancel my account'
 
-    dialog = page.driver.browser.switch_to.alert
-    dialog.text.should == 'Are you sure?'
-    dialog.accept
+    page.driver.browser.accept_js_confirms
 
     expect(page).to have_content('Bye! Your account has been successfully Cancelled. We hope to see you again soon.')
     expect(page).to have_content('Sign Up')
@@ -36,7 +34,7 @@ feature 'user deletes account', %Q{
   end
 
 
-  scenario 'user attempts to login after deleting account', js: true do
+  xscenario 'user attempts to login after deleting account' do
     user = FactoryBot.create(:user)
     visit root_path
     click_link 'Sign In'
