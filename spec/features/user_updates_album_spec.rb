@@ -11,8 +11,6 @@ feature 'user updates an album', %Q{
   # •	I must be able to get to Edit page from the index OR show page
 
   scenario 'a signed in user successfully updates their album' do
-    # For this & the tests below, I need to include verifying with a password
-
     user = FactoryBot.create(:user)
     album = FactoryBot.create(:album, user: user)
     visit root_path
@@ -33,8 +31,56 @@ feature 'user updates an album', %Q{
     expect(page).to have_content('Album Updated')
   end
 
-  scenario 'a signed in user does not successfully update their album'
-  # For this & the test before, I need to include verifying with a password
-  scenario 'unauthenticated user attempts to update an album'
-  scenario 'authenticated user attempts to update someone elses album'
+  scenario 'a signed in user does not successfully update their album' do
+    user = FactoryBot.create(:user)
+    album = FactoryBot.create(:album, user: user)
+    visit root_path
+    click_link 'Sign In'
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Sign In'
+
+    click_link album.title
+    click_link 'Update'
+
+    fill_in 'Title', with: ''
+    fill_in 'Artist', with: ''
+    fill_in 'Summary', with: ''
+    fill_in 'Starting year', with: ''
+    click_button 'Save'
+
+    expect(page).to have_content('Editing Album')
+    expect(page).to have_content('4 errors prohibited this album from being saved:')
+    expect(page).to have_content("Title can't be blank")
+    expect(page).to have_content("Artist can't be blank")
+    expect(page).to have_content("Summary can't be blank")
+    expect(page).to have_content("Starting year can't be blank")
+  end
+
+  scenario 'unauthenticated user attempts to update an album' do
+    user = FactoryBot.create(:user)
+    album = FactoryBot.create(:album, user: user)
+
+    visit root_path
+    click_link album.title
+
+    expect(page).to_not have_content('Update')
+  end
+
+  scenario 'authenticated user attempts to update someone elses album' do
+    user = User.create({first_name: "John", last_name: "Smith", email: "johnsmith@example.com", password: "johnsmith"})
+    album = FactoryBot.create(:album,
+     user: FactoryBot.create(:user, first_name: "Jill", last_name: "Scott", email: "jill@example.com", password: "password"))
+
+    visit root_path
+    click_link 'Sign In'
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Sign In'
+
+    click_link "Summer 08"
+
+    expect(page).to have_content('Jill Scott (jill@example.com) uploaded this album page on')
+    expect(page).to_not have_content('Update')
+  end
 end

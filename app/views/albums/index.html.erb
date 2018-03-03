@@ -1,5 +1,15 @@
 <h1>All Albums</h1>
 
+<% form_tag albums_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+
+<hr>
+<br />
 
 <table>
   <thead>
@@ -10,9 +20,18 @@
 
   <tbody>
     <% @albums.each do |album| %>
-      <tr>
-        <td><%= link_to album.title, album, id: album.title %></td>
-      </tr>
+        <tr>
+            <td>
+              <div class ="album-listing">
+                <%= link_to album.title.upcase, album, id: album.title %>
+              </div>
+            </td>&nbsp;
+            <td>
+              <div class="album-listing">
+                <%= album.created_at %>
+              </div>
+            </td>
+        </tr>
     <% end %>
   </tbody>
 </table>

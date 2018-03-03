@@ -6,4 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Album.create!(title: "Innerspeaker", artist: "Tame Impala", summary: "Sounding a bit like Lennon, rocking a bit like Pink Floyd. It's a mix, and you don't want to forget it.", starting_year: '2012', genre: "psych-rock", tracks: ['It is Not Meant To Be', 'Desire Be Desire Go', 'Alter Ego', 'Lucidity', 'Why Wont You Make Up Your Mind?', 'Solitude Is Bliss', 'Jeremys Storm', 'Expectation', 'Bold Narrow Of Time', 'Runway Houses, Cities, And Clouds', 'I Dont Really Mind'] )
+user = User.create!(first_name: "Jake", last_name: "Fruci", email: "newemail@example.com", password: "password")
+
+Album.new(title: "Innerspeaker", artist: "Tame Impala", summary: "Sounding a bit like Lennon, rocking a bit like Pink Floyd. It's a mix, and you don't want to forget it.", starting_year: '2012', genre: "psych-rock", user: user, tracks: ['It is Not Meant To Be', 'Desire Be Desire Go', 'Alter Ego', 'Lucidity', 'Why Wont You Make Up Your Mind?', 'Solitude Is Bliss', 'Jeremys Storm', 'Expectation', 'Bold Narrow Of Time', 'Runway Houses, Cities, And Clouds','I Dont Really Mind'], )

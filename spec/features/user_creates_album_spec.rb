@@ -28,9 +28,6 @@ feature 'authenticated user adds album', %Q{
     fill_in 'album_starting_year', with: '2012'
     fill_in 'album_summary', with: 'The sophomore album from Tame Impala exhibits his best work yet. It truly seems like an album meant for the 70s, while wow-ing listeners with epic cruscendos and psychadelic grooves.'
     fill_in 'album_genre', with: 'psych-rock'
-    # fill_in 'album_tracks[1]', with: 'Be Above It'
-    # fill_in 'album_tracks[2]', with: 'Enders Toi'
-    # fill_in 'album_tracks[3]', with: 'Apocolypse Dreams'
     click_button 'Save'
 
     expect(page).to have_content('Sign Out')

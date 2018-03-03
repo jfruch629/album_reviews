@@ -16,6 +16,7 @@ class AlbumsController < ApplicationController
 
   def show
     @album = Album.find(params[:id])
+    @user = User.find(@album.user.id)
   end
 
   def create
@@ -39,6 +40,13 @@ def update
   else
     render :edit
   end
+end
+
+def destroy
+  @album.destroy
+  @albums = Album.all.order('created_at DESC')
+  flash[:notice] = "Album successfully removed."
+  render action: "index"
 end
 
   private

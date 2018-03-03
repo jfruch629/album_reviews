@@ -1,18 +1,17 @@
-<p id="notice"><%= notice %></p>
+<h2><%= @album.title %></h2>
+<hr>
 
-<p>
-  <strong><%= @album.title %></strong>
+<% if @album.user == current_user %>
+  You uploaded this album page on <%= @album.created_at %>
+<% else %>
+  <%= @user.first_name %> <%= @user.last_name %> <b>(<%= @user.email %>)</b> uploaded this album page on <%= @album.created_at %>
+<% end %>
 
-</p>
+<h4>Artist: <%= @album.artist %><h4>
 
-<p>
-  <strong><%= @album.artist %></strong>
-</p>
+<h4>Release Date: <%= @album.starting_year %></h4>
 
-<p>
-  <strong><%= @album.starting_year %></strong>
-  <%= @album.genre %>
-</p>
+<h4>Genre: <%= @album.genre %> </h4>
 
 <% if @album.tracks? %>
   <p>
@@ -26,6 +25,8 @@
 </p>
 
 <br />
-<p><%= link_to 'Update', edit_album_path(@album) %></p>
-<p><%= link_to 'Destroy', @album, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-<p><%= link_to 'Back', root_path %></p>
+<% if current_user == @album.user %>
+  <%= link_to 'Update', edit_album_path(@album) %> |
+  <%= link_to 'Destroy', @album, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
+<%= link_to 'Back', root_path %>
