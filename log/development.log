@@ -9253,3 +9253,616 @@ Processing by AlbumsController#show as HTML
 Completed 200 OK in 579ms (Views: 453.9ms | ActiveRecord: 35.0ms)
 
 
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2116576165176548460)[0m
+  [1m[35m (25.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddRoleToUsers (20180303150756)
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (67.2ms)[0m  [1m[35mALTER TABLE "users" ADD "role" character varying DEFAULT 'member' NOT NULL[0m
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2116576165176548460)[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (91.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (361.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "album-reviews_development"[0m
+  [1m[35m (143.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "album-reviews_test"[0m
+  [1m[35m (63.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (18.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2116576165176548460)[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20180224194607)
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (26.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (12.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (4.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180224194607"]]
+  [1m[35m (3.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddRoleToUsers (20180303150756)
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (51.0ms)[0m  [1m[35mALTER TABLE "users" ADD "role" character varying DEFAULT 'member' NOT NULL[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180303150756"]]
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (3.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-03-03 15:12:44.743748"], ["updated_at", "2018-03-03 15:12:44.743748"]]
+  [1m[35m (5.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2116576165176548460)[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2116576165176548460)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAlbums (20180303151708)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (27.6ms)[0m  [1m[35mCREATE TABLE "albums" ("id" bigserial primary key, "title" character varying NOT NULL, "artist" character varying NOT NULL, "release_year" character varying NOT NULL, "summary" character varying NOT NULL, "genre" character varying, "tracks" character varying[] DEFAULT '{}')[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180303151708"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2116576165176548460)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 10.0.2.2 at 2018-03-03 15:34:16 +0000
+Started GET "/" for 10.0.2.2 at 2018-03-03 15:34:47 +0000
+Started GET "/albums" for 10.0.2.2 at 2018-03-03 15:35:49 +0000
+  [1m[35m (12847.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (12851.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AlbumsController#index as HTML
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (2258.0ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  [1m[36mAlbum Load (2274.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  [1m[35m (1231.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  Rendered albums/index.html.erb within layouts/application (17487.8ms)
+  Rendered albums/index.html.erb within layouts/application (16899.2ms)
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (10500.8ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  Rendered albums/index.html.erb within layouts/application (17451.6ms)
+Completed 200 OK in 126960ms (Views: 114032.8ms | ActiveRecord: 2274.2ms)
+
+
+Completed 200 OK in 126933ms (Views: 100927.1ms | ActiveRecord: 15236.3ms)
+
+
+Completed 401 Unauthorized in 95655ms (ActiveRecord: 10500.8ms)
+
+
+  
+ActionView::Template::Error (can't add a new key into hash during iteration):
+     5:     <%= csrf_meta_tags %>
+     6: 
+     7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+     8:     <%= javascript_include_tag 'application' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb___298623360686607208_69819156593140'
+Started GET "/albums" for 10.0.2.2 at 2018-03-03 15:38:53 +0000
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (397.3ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  Rendered albums/index.html.erb within layouts/application (3448.2ms)
+Completed 200 OK in 8002ms (Views: 6721.3ms | ActiveRecord: 397.3ms)
+
+
+Started GET "/albums" for 10.0.2.2 at 2018-03-03 15:39:16 +0000
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (734.0ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  Rendered albums/index.html.erb within layouts/application (2843.3ms)
+Completed 200 OK in 7067ms (Views: 6266.0ms | ActiveRecord: 734.0ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2018-03-03 15:39:32 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (190.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5629.3ms)
+Completed 200 OK in 14764ms (Views: 7634.1ms | ActiveRecord: 4436.3ms)
+
+
+Started GET "/users/sign_up" for 10.0.2.2 at 2018-03-03 15:39:52 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (141.6ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (3945.3ms)
+Completed 200 OK in 5337ms (Views: 5174.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 10.0.2.2 at 2018-03-03 15:41:05 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"W2EtpUaHAia6OKgqWMKn3p4bzqC69QkGtnqDbkpI4j+tI292LfFYbFQuaWvimEzr5TWC4RZV4P2Auw1BmTzHWA==", "user"=>{"first_name"=>"Jake", "last_name"=>"Fruci", "email"=>"example@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (274.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  [1m[35mSQL (35.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Jake"], ["last_name", "Fruci"], ["email", "example@email.com"], ["encrypted_password", "$2a$11$CscglkmwUUDvFY.L51qqT.0duN6bKNuYO2JCpouRZcvhqlWvMxfa6"], ["created_at", "2018-03-03 15:41:08.208458"], ["updated_at", "2018-03-03 15:41:08.208458"]]
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (19.5ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2018-03-03 15:41:08.275390"], ["last_sign_in_at", "2018-03-03 15:41:08.275390"], ["current_sign_in_ip", "10.0.2.2/32"], ["last_sign_in_ip", "10.0.2.2/32"], ["updated_at", "2018-03-03 15:41:08.280313"], ["id", 1]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 3234ms (ActiveRecord: 339.1ms)
+
+
+Started GET "/" for 10.0.2.2 at 2018-03-03 15:41:08 +0000
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (2.8ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  Rendered albums/index.html.erb within layouts/application (28.9ms)
+  [1m[36mUser Load (271.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 926ms (Views: 592.2ms | ActiveRecord: 273.9ms)
+
+
+Started GET "/albums/new" for 10.0.2.2 at 2018-03-03 15:41:12 +0000
+Processing by AlbumsController#new as HTML
+  Rendering albums/new.html.erb within layouts/application
+  Rendered albums/_form.html.erb (19.5ms)
+  Rendered albums/new.html.erb within layouts/application (82.6ms)
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 688ms (Views: 507.0ms | ActiveRecord: 35.2ms)
+
+
+Started GET "/albums/new" for 10.0.2.2 at 2018-03-03 15:41:43 +0000
+Processing by AlbumsController#new as HTML
+  Rendering albums/new.html.erb within layouts/application
+  Rendered albums/_form.html.erb (8.6ms)
+  Rendered albums/new.html.erb within layouts/application (55.4ms)
+  [1m[36mUser Load (42.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 454ms (Views: 365.6ms | ActiveRecord: 42.0ms)
+
+
+Started GET "/albums/new" for 10.0.2.2 at 2018-03-03 15:41:48 +0000
+Processing by AlbumsController#new as HTML
+  Rendering albums/new.html.erb within layouts/application
+  Rendered albums/_form.html.erb (10.8ms)
+  Rendered albums/new.html.erb within layouts/application (66.3ms)
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 497ms (Views: 416.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/albums/new" for 10.0.2.2 at 2018-03-03 15:42:18 +0000
+Processing by AlbumsController#new as HTML
+  Rendering albums/new.html.erb within layouts/application
+  Rendered albums/_form.html.erb (12.3ms)
+  Rendered albums/new.html.erb within layouts/application (76.9ms)
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 588ms (Views: 523.3ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/albums" for 10.0.2.2 at 2018-03-03 15:42:33 +0000
+Processing by AlbumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Iy6efPnECqqsQeqr9O/4yLRI4v6pJIha2zsyZ8pOiVbVbNyvkrJQ4EJXK+pOtRP9z2auvwWEYaHt+rxIGTqsMQ==", "album"=>{"title"=>"Lonerism", "artist"=>"Tame Impala", "summary"=>"Good Album", "release_year"=>"2012", "genre"=>"", "tracks"=>{"track"=>""}}, "commit"=>"Save"}
+Unpermitted parameter: :tracks
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  Rendering albums/new.html.erb within layouts/application
+  Rendered albums/_form.html.erb (11.4ms)
+  Rendered albums/new.html.erb within layouts/application (74.8ms)
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 745ms (Views: 543.3ms | ActiveRecord: 4.6ms)
+
+
+Started POST "/albums" for 10.0.2.2 at 2018-03-03 15:43:14 +0000
+Processing by AlbumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Iy6efPnECqqsQeqr9O/4yLRI4v6pJIha2zsyZ8pOiVbVbNyvkrJQ4EJXK+pOtRP9z2auvwWEYaHt+rxIGTqsMQ==", "album"=>{"title"=>"Lonerism", "artist"=>"Tame Impala", "summary"=>"Good Album", "release_year"=>"2012", "genre"=>"", "tracks"=>{"track"=>""}}, "commit"=>"Save"}
+Unpermitted parameter: :tracks
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  Rendering albums/new.html.erb within layouts/application
+  Rendered albums/_form.html.erb (19.8ms)
+  Rendered albums/new.html.erb within layouts/application (103.9ms)
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 654ms (Views: 637.5ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/albums" for 10.0.2.2 at 2018-03-03 15:43:18 +0000
+Processing by AlbumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+CpJZfYR2o89kdnH5kMRN0altii0SJYSM3a0oTs1qJ8OaAu2nWeAxdOHGIZcGfoCPYv6aRjof+kFtzqO6EGN+A==", "album"=>{"title"=>"Lonerism", "artist"=>"Tame Impala", "summary"=>"Good Album", "release_year"=>"2012", "genre"=>"", "tracks"=>{"track"=>""}}, "commit"=>"Save"}
+Unpermitted parameter: :tracks
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  Rendering albums/new.html.erb within layouts/application
+  Rendered albums/_form.html.erb (10.3ms)
+  Rendered albums/new.html.erb within layouts/application (60.1ms)
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 439ms (Views: 422.9ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/albums" for 10.0.2.2 at 2018-03-03 15:43:30 +0000
+Processing by AlbumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EbISzky15Ox67SyqhOeA9mYhwGI770lPLmmfr/6OJ1fn8FAdJ8O+ppT77es+vWvDHQ+MI5dPoLQYqBGALfoCMA==", "album"=>{"title"=>"Lonerism", "artist"=>"Tame Impala", "summary"=>"Good Album", "release_year"=>"2012", "genre"=>"", "tracks"=>{"track"=>""}}, "commit"=>"Save"}
+Unpermitted parameter: :tracks
+  [1m[35m (21.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (49.8ms)[0m  [1m[31mROLLBACK[0m
+  Rendering albums/new.html.erb within layouts/application
+  Rendered albums/_form.html.erb (42.0ms)
+  Rendered albums/new.html.erb within layouts/application (138.3ms)
+  [1m[36mUser Load (171.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 1389ms (Views: 822.9ms | ActiveRecord: 243.3ms)
+
+
+Started POST "/albums" for 10.0.2.2 at 2018-03-03 15:44:09 +0000
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AlbumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EbISzky15Ox67SyqhOeA9mYhwGI770lPLmmfr/6OJ1fn8FAdJ8O+ppT77es+vWvDHQ+MI5dPoLQYqBGALfoCMA==", "album"=>{"title"=>"Lonerism", "artist"=>"Tame Impala", "summary"=>"Good Album", "release_year"=>"2012", "genre"=>"", "tracks"=>{"track"=>""}}, "commit"=>"Save"}
+Unpermitted parameter: :tracks
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 401 Unauthorized in 399ms (ActiveRecord: 24.8ms)
+
+
+  
+ActiveModel::MissingAttributeError (can't write unknown attribute `user_id`):
+  
+app/controllers/albums_controller.rb:20:in `create'
+Started PUT "/__web_console/repl_sessions/99a1c4dd98e6a762b7d755c2f1d8c5ad" for 10.0.2.2 at 2018-03-03 15:44:48 +0000
+Started PUT "/__web_console/repl_sessions/99a1c4dd98e6a762b7d755c2f1d8c5ad" for 10.0.2.2 at 2018-03-03 15:44:50 +0000
+Started PUT "/__web_console/repl_sessions/99a1c4dd98e6a762b7d755c2f1d8c5ad" for 10.0.2.2 at 2018-03-03 15:45:13 +0000
+Started PUT "/__web_console/repl_sessions/99a1c4dd98e6a762b7d755c2f1d8c5ad" for 10.0.2.2 at 2018-03-03 15:45:13 +0000
+Started PUT "/__web_console/repl_sessions/99a1c4dd98e6a762b7d755c2f1d8c5ad" for 10.0.2.2 at 2018-03-03 15:45:14 +0000
+Started PUT "/__web_console/repl_sessions/99a1c4dd98e6a762b7d755c2f1d8c5ad" for 10.0.2.2 at 2018-03-03 15:45:15 +0000
+Started PUT "/__web_console/repl_sessions/99a1c4dd98e6a762b7d755c2f1d8c5ad" for 10.0.2.2 at 2018-03-03 15:45:16 +0000
+Started PUT "/__web_console/repl_sessions/99a1c4dd98e6a762b7d755c2f1d8c5ad" for 10.0.2.2 at 2018-03-03 15:45:18 +0000
+Started PUT "/__web_console/repl_sessions/99a1c4dd98e6a762b7d755c2f1d8c5ad" for 10.0.2.2 at 2018-03-03 15:45:28 +0000
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (343.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "album-reviews_development"[0m
+  [1m[35m (137.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "album-reviews_test"[0m
+  [1m[35m (159.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (19.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2116576165176548460)[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20180224194607)
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (33.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (4.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180224194607"]]
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddRoleToUsers (20180303150756)
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (34.1ms)[0m  [1m[35mALTER TABLE "users" ADD "role" character varying DEFAULT 'member' NOT NULL[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180303150756"]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAlbums (20180303151708)
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (18.7ms)[0m  [1m[35mCREATE TABLE "albums" ("id" bigserial primary key, "title" character varying NOT NULL, "artist" character varying NOT NULL, "release_year" character varying NOT NULL, "summary" character varying NOT NULL, "genre" character varying, "tracks" character varying[] DEFAULT '{}')[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180303151708"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (12.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-03-03 15:46:24.021985"], ["updated_at", "2018-03-03 15:46:24.021985"]]
+  [1m[35m (3.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2116576165176548460)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2116576165176548460)[0m
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUserIdToAlbums (20180303155438)
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.7ms)[0m  [1m[35mALTER TABLE "albums" ADD "user_id" integer[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180303155438"]]
+  [1m[35m (3.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT pg_advisory_unlock(2116576165176548460)[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/albums" for 10.0.2.2 at 2018-03-03 15:56:17 +0000
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AlbumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EbISzky15Ox67SyqhOeA9mYhwGI770lPLmmfr/6OJ1fn8FAdJ8O+ppT77es+vWvDHQ+MI5dPoLQYqBGALfoCMA==", "album"=>{"title"=>"Lonerism", "artist"=>"Tame Impala", "summary"=>"Good Album", "release_year"=>"2012", "genre"=>"", "tracks"=>{"track"=>""}}, "commit"=>"Save"}
+  [1m[36mUser Load (40.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 401 Unauthorized in 333ms (ActiveRecord: 65.1ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2018-03-03 15:56:22 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (19.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (522.3ms)
+Completed 200 OK in 37621ms (Views: 37504.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2018-03-03 15:57:24 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (102.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (793.8ms)
+Completed 200 OK in 2062ms (Views: 1987.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 10.0.2.2 at 2018-03-03 15:57:33 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"F3Zz5XZG4aYO5v3q2pgVe8jNMnquWgMhQetCq2AzF0/hNDE2HTC77ODwPKtgwv5Os+N+OwL66tp3KsyEs0cyKA==", "user"=>{"email"=>"example@email.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (69.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 868ms (ActiveRecord: 69.7ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"F3Zz5XZG4aYO5v3q2pgVe8jNMnquWgMhQetCq2AzF0/hNDE2HTC77ODwPKtgwv5Os+N+OwL66tp3KsyEs0cyKA==", "user"=>{"email"=>"example@email.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (91.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (364.7ms)
+Completed 200 OK in 23979ms (Views: 1363.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 10.0.2.2 at 2018-03-03 15:58:07 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SVOKXKhV0yC5SaVorwdEIzbQguD8uqsrGuac44ehEUK/EciPwyOJaldfZCkVXa8WTf7OoVAaQtAsJxLMVNU0JQ==", "user"=>{"email"=>"example@email.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (51.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 113ms (ActiveRecord: 51.3ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SVOKXKhV0yC5SaVorwdEIzbQguD8uqsrGuac44ehEUK/EciPwyOJaldfZCkVXa8WTf7OoVAaQtAsJxLMVNU0JQ==", "user"=>{"email"=>"example@email.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (77.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (453.0ms)
+Completed 200 OK in 2790ms (Views: 2249.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 10.0.2.2 at 2018-03-03 15:58:13 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (219.5ms)
+Completed 200 OK in 1153ms (Views: 1132.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 10.0.2.2 at 2018-03-03 15:58:23 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xz8UZ9DEIpJJkNV4NBjBXM+4aNQx82boqkPuBKNzd6+pfVa0u7J42KeGFDmOQipptJYklZ1TjxOcgmArcAdSyA==", "user"=>{"first_name"=>"Jake", "last_name"=>"Fruci", "email"=>"example@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (162.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  [1m[35mSQL (158.0ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Jake"], ["last_name", "Fruci"], ["email", "example@email.com"], ["encrypted_password", "$2a$11$Fmf1R/83cFHpcXs7/XCBPuDTfcLmkgJhWi2BdoBrfv9Hbxj6ca8BO"], ["created_at", "2018-03-03 15:58:42.879043"], ["updated_at", "2018-03-03 15:58:42.879043"]]
+  [1m[35m (20.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (27.9ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2018-03-03 15:58:43.068028"], ["last_sign_in_at", "2018-03-03 15:58:43.068028"], ["current_sign_in_ip", "10.0.2.2/32"], ["last_sign_in_ip", "10.0.2.2/32"], ["updated_at", "2018-03-03 15:58:43.073602"], ["id", 1]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 20415ms (ActiveRecord: 372.4ms)
+
+
+Started GET "/" for 10.0.2.2 at 2018-03-03 15:58:43 +0000
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (336.9ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  Rendered albums/index.html.erb within layouts/application (431.3ms)
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 1035ms (Views: 470.7ms | ActiveRecord: 423.1ms)
+
+
+Started GET "/albums/new" for 10.0.2.2 at 2018-03-03 15:59:30 +0000
+Processing by AlbumsController#new as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering albums/new.html.erb within layouts/application
+  Rendered albums/_form.html.erb (13.9ms)
+  Rendered albums/new.html.erb within layouts/application (95.6ms)
+Completed 200 OK in 817ms (Views: 508.9ms | ActiveRecord: 79.1ms)
+
+
+Started POST "/albums" for 10.0.2.2 at 2018-03-03 15:59:37 +0000
+Processing by AlbumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qVNOEeHODZireU78vlK3qmgEy6JQU5dqXsS2Q6yN58pfEQzCirhX0kVvj70ECFyfEyqH4/zzfpFoBThsf/nCrQ==", "album"=>{"title"=>"Lonerism", "artist"=>"Tame", "summary"=>"WADImwad", "release_year"=>"2012", "genre"=>"", "tracks"=>{"track"=>""}}, "commit"=>"Save"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: :tracks
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist", "release_year", "summary", "genre", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Lonerism"], ["artist", "Tame"], ["release_year", "2012"], ["summary", "WADImwad"], ["genre", ""], ["user_id", 1]]
+  [1m[35m (10.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/albums/1
+Completed 302 Found in 256ms (ActiveRecord: 14.7ms)
+
+
+Started GET "/albums/1" for 10.0.2.2 at 2018-03-03 15:59:38 +0000
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (6.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Album Load (0.1ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered albums/show.html.erb within layouts/application (106.7ms)
+Completed 401 Unauthorized in 467ms (ActiveRecord: 10.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `created_at' for #<Album:0x007f1238179098>
+Did you mean?  create_user):
+    3: <p id="notice"><%= notice %></p>
+    4: 
+    5:  <% if @album.user == current_user %>
+    6:    You uploaded this album page on <%= @album.created_at %>
+    7:  <% else %>
+    8:    <%= @user.first_name %> <%= @user.last_name %> <b>(<%= @user.email %>)</b> uploaded this album page on <%= @album.created_at %>
+    9:  <% end %>
+  
+app/views/albums/show.html.erb:6:in `_app_views_albums_show_html_erb__4218954078861675250_69858113696440'
+Started PUT "/__web_console/repl_sessions/bd9176c5bf9c639a9173c22f1b2cb18e" for 10.0.2.2 at 2018-03-03 15:59:46 +0000
+Started PUT "/__web_console/repl_sessions/bd9176c5bf9c639a9173c22f1b2cb18e" for 10.0.2.2 at 2018-03-03 15:59:47 +0000
+Started PUT "/__web_console/repl_sessions/bd9176c5bf9c639a9173c22f1b2cb18e" for 10.0.2.2 at 2018-03-03 15:59:51 +0000
+Started PUT "/__web_console/repl_sessions/bd9176c5bf9c639a9173c22f1b2cb18e" for 10.0.2.2 at 2018-03-03 15:59:52 +0000
+Started PUT "/__web_console/repl_sessions/bd9176c5bf9c639a9173c22f1b2cb18e" for 10.0.2.2 at 2018-03-03 16:00:01 +0000
+Started PUT "/__web_console/repl_sessions/bd9176c5bf9c639a9173c22f1b2cb18e" for 10.0.2.2 at 2018-03-03 16:00:07 +0000
+Started PUT "/__web_console/repl_sessions/bd9176c5bf9c639a9173c22f1b2cb18e" for 10.0.2.2 at 2018-03-03 16:00:09 +0000
+Started PUT "/__web_console/repl_sessions/bd9176c5bf9c639a9173c22f1b2cb18e" for 10.0.2.2 at 2018-03-03 16:00:17 +0000
+Started PUT "/__web_console/repl_sessions/bd9176c5bf9c639a9173c22f1b2cb18e" for 10.0.2.2 at 2018-03-03 16:00:21 +0000
+Started PUT "/__web_console/repl_sessions/bd9176c5bf9c639a9173c22f1b2cb18e" for 10.0.2.2 at 2018-03-03 16:00:22 +0000
+Started PUT "/__web_console/repl_sessions/bd9176c5bf9c639a9173c22f1b2cb18e" for 10.0.2.2 at 2018-03-03 16:01:23 +0000
+Started PUT "/__web_console/repl_sessions/bd9176c5bf9c639a9173c22f1b2cb18e" for 10.0.2.2 at 2018-03-03 16:01:23 +0000
+Started GET "/albums/1" for 10.0.2.2 at 2018-03-03 16:01:51 +0000
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (1.2ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Album Load (0.1ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered albums/show.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 454ms (Views: 381.5ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/" for 10.0.2.2 at 2018-03-03 16:01:57 +0000
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (1.5ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  Rendered albums/index.html.erb within layouts/application (71.5ms)
+Completed 401 Unauthorized in 320ms (ActiveRecord: 1.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    2:  <hr>
+    3: 
+    4: <% @albums.each do |album| %>
+    5:   <p><%= @album.title %> (<%= @album.release_year %>) </p>
+    6: <% end %>
+    7: 
+    8:  <table>
+  
+app/views/albums/index.html.erb:5:in `block in _app_views_albums_index_html_erb___3741710466045214639_69858231746500'
+app/views/albums/index.html.erb:4:in `_app_views_albums_index_html_erb___3741710466045214639_69858231746500'
+Started PUT "/__web_console/repl_sessions/b5d985beefcb357f013757c313c55f6f" for 10.0.2.2 at 2018-03-03 16:02:03 +0000
+Started PUT "/__web_console/repl_sessions/b5d985beefcb357f013757c313c55f6f" for 10.0.2.2 at 2018-03-03 16:02:03 +0000
+Started PUT "/__web_console/repl_sessions/b5d985beefcb357f013757c313c55f6f" for 10.0.2.2 at 2018-03-03 16:02:09 +0000
+Started GET "/" for 10.0.2.2 at 2018-03-03 16:02:34 +0000
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.9ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  Rendered albums/index.html.erb within layouts/application (10.0ms)
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 637ms (Views: 547.5ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/" for 10.0.2.2 at 2018-03-03 16:02:51 +0000
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (53.3ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  Rendered albums/index.html.erb within layouts/application (58.7ms)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 500ms (Views: 362.2ms | ActiveRecord: 54.4ms)
+
+
+Started GET "/albums/1" for 10.0.2.2 at 2018-03-03 16:03:19 +0000
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (1718.5ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Album Load (0.1ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (1542.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mUser Load (1204.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered albums/show.html.erb within layouts/application (3448.0ms)
+Completed 200 OK in 23042ms (Views: 13484.4ms | ActiveRecord: 4465.4ms)
+
+
+Started DELETE "/users/sign_out" for 10.0.2.2 at 2018-03-03 16:06:07 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"GWnmSWquJcjmkxkJdXmXIa0RNOXevdQuuh/U7+bJYrTvK6SaAdh/ggiF2EjPI3wU1j94pHIdPdWM3lrANb1H0w=="}
+  [1m[36mUser Load (96.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (261.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (240.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 2948ms (ActiveRecord: 598.7ms)
+
+
+Started GET "/" for 10.0.2.2 at 2018-03-03 16:06:10 +0000
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (1324.5ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  Rendered albums/index.html.erb within layouts/application (3651.3ms)
+Completed 200 OK in 7249ms (Views: 5699.2ms | ActiveRecord: 1324.5ms)
+
+
+Started GET "/albums/1" for 10.0.2.2 at 2018-03-03 16:06:20 +0000
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (961.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Album Load (0.1ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (399.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering albums/show.html.erb within layouts/application
+  Rendered albums/show.html.erb within layouts/application (814.4ms)
+Completed 401 Unauthorized in 3047ms (ActiveRecord: 1361.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `created_at' for #<Album:0x007f1238bbf110>
+Did you mean?  create_user):
+     5:  <% if @album.user == current_user %>
+     6:    You uploaded this album!
+     7:  <% else %>
+     8:    <%= @user.first_name %> <%= @user.last_name %> <b>(<%= @user.email %>)</b> uploaded this album page on <%= @album.created_at %>
+     9:  <% end %>
+    10: 
+    11: <h4>Artist: <%= @album.artist %><h4>
+  
+app/views/albums/show.html.erb:8:in `_app_views_albums_show_html_erb__4218954078861675250_69858117746620'
+Started GET "/albums/1" for 10.0.2.2 at 2018-03-03 16:06:50 +0000
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (1297.7ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Album Load (0.1ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (630.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering albums/show.html.erb within layouts/application
+  Rendered albums/show.html.erb within layouts/application (365.8ms)
+Completed 200 OK in 9068ms (Views: 2966.4ms | ActiveRecord: 1928.2ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2018-03-03 16:07:51 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (16.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (383.1ms)
+Completed 200 OK in 1222ms (Views: 1143.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 10.0.2.2 at 2018-03-03 16:07:56 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cJLLWSJaIWCmiuNmIr8LR/+WmlTI6o85AUOXYMLFyiu8MXVU2fDbV7T6tZn/OWmED0BzSsD3SQKkmSxpgIqKcQ==", "user"=>{"email"=>"example@email.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (95.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (55.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["current_sign_in_at", "2018-03-03 16:07:57.320434"], ["sign_in_count", 2], ["updated_at", "2018-03-03 16:07:57.471783"], ["id", 1]]
+  [1m[35m (11.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 1290ms (ActiveRecord: 163.4ms)
+
+
+Started GET "/" for 10.0.2.2 at 2018-03-03 16:07:57 +0000
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (1.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  Rendered albums/index.html.erb within layouts/application (40.7ms)
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 583ms (Views: 513.2ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/albums/1" for 10.0.2.2 at 2018-03-03 16:08:00 +0000
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (9.8ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Album Load (0.1ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered albums/show.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 595ms (Views: 487.4ms | ActiveRecord: 13.1ms)
+
+
+Started GET "/albums/new" for 10.0.2.2 at 2018-03-03 16:10:39 +0000
+Processing by AlbumsController#new as HTML
+  [1m[36mUser Load (15.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering albums/new.html.erb within layouts/application
+  Rendered albums/_form.html.erb (380.4ms)
+  Rendered albums/new.html.erb within layouts/application (499.7ms)
+Completed 200 OK in 1746ms (Views: 1446.4ms | ActiveRecord: 15.1ms)
+
+
