@@ -13,39 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-body {
- background-color: #FFFFFF;
- color: #333;
- margin: 33px;
- font-family: 'Helvetica Neue', sans-serif;
- font-size: 13px;
- line-height: 18px;
-}
-
-h1 {
-  color: 556888;
-}
-
-a:link    { color: #c00; text-decoration: none; }  /* unvisited links */
-a:visited { color: #0c0; text-decoration: none; }  /* visited links   */
-a:hover   { color: #00c; text-decoration: none; }  /* user hovers     */
-a:active  { color: #ccc; text-decoration: none; }  /* active links    */
-
-strong {
-  list-style: inline;
-  padding: 2px;
-  margin-right: 2em;
-  margin-bottom: 5em;
-  border-style: ridge;
-  background-color: #F1F1F1;
-}
-
-.top-bar {
-  margin-bottom: 3.5em;
-}
-
-.album-listing {
-  padding-top: 5px;
-
-}
