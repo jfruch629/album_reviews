@@ -25,27 +25,6 @@
  <% end %>
  </p>
 
-<p>Most Recent Reviews<p>
-  <% if !(@album.reviews.nil?) %>
-  <tbody>
-    <% @album.reviews.each do |review| %>
-      <tr>
-        <td>
-          <hr><br />
-          <%= review.body %>
-          <br /><br /><br />
-          <p>
-          </p>
-        </td>
-          reviewed on: <%= review.created_at.to_s %> by <%= review.user.first_name %> <%= review.user.last_name %>
-      </tr>
-    <% end %>
-  <% end %>
-</tbody>
-</table>
-</div>
-  <%= render "reviews/form", review: @review, album: @album %>
-
  <br />
  <% if current_user == @album.user %>
     <%= link_to 'Update', edit_album_path(@album) %> |

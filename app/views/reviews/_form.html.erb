@@ -1,9 +1,0 @@
-<p> Submit your thoughts on this album, below: </p>
-<%= form_for([@album, @review]) do |form| %>
-  <div class="field">
-    <%= form.text_field :body, id: :review_body %>
-  </div>
-  <div class="actions">
-    <%= form.submit 'Save Review' %>
-  </div>
-<% end %>

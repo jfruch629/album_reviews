@@ -6,9 +6,7 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
-  resources :albums do
-    resources :reviews, only: [:index, :new, :create, :edit]
-  end
+  resources :albums
 
   root 'albums#index'
 
