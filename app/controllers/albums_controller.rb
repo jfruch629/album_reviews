@@ -4,16 +4,19 @@ class AlbumsController < ApplicationController
 
   def index
     @albums = Album.all
+    @review = Review.new
     root_path = '/'
   end
 
   def new
     @album = Album.new
+
   end
 
   def show
     @album = Album.find(params[:id])
     @user = User.find(@album.user.id)
+    @review = Review.new
   end
 
   def create
